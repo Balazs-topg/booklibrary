@@ -4,7 +4,9 @@
   "description": "*This project is part of The Odin Project curriculum's JavaScript Course (Project: Library).*",
   "main": "script.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "tailwindcss -i ./src/input.css -o ./dist/output.css --watch"
+
   },
   "repository": {
     "type": "git",
@@ -15,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/Balazs-topg/booklibrary/issues"
   },
-  "homepage": "https://github.com/Balazs-topg/booklibrary#readme"
+  "homepage": "https://github.com/Balazs-topg/booklibrary#readme",
+  "devDependencies": {
+    "tailwindcss": "^3.2.7"
+  }
 }
