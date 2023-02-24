@@ -1,0 +1,19 @@
+{
+  "name": "booklibrary",
+  "version": "1.0.0",
+  "description": "*This project is part of The Odin Project curriculum's JavaScript Course (Project: Library).*",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Balazs-topg/booklibrary.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Balazs-topg/booklibrary/issues"
+  },
+  "homepage": "https://github.com/Balazs-topg/booklibrary#readme"
+}
