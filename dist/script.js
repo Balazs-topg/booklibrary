@@ -1,6 +1,4 @@
-//! some Logical Errors (with the "remove book" btn not always shown when it's supposed to)
-//! also "remove book" does not work
-//! needs **some** refactoring
+//* maybe add esc to close menue
 let myLibrary = [];
 
 //creates book object
@@ -100,32 +98,46 @@ function clearForm() {
 }
 
 ///querys btn interaction and stores them in a variable
-const closeBtn = document.querySelector(".close-window");          //close btn (red circle)
-const addBookMenue = document.querySelector("#addbookmenue");      //referes to the actuall dom element that contains all the menue items
-const addBookBtn = document.querySelector("#addbookbtn");          //"Add Book" btn
-const submitBtn = document.querySelector("button[type='submit']"); //submit btn (it's actuall name is Add Book , or other times edit) (green)
-const removeBookBtn = document.querySelector("#removeBookBtn");    //"remove book" btn (red)
+const closeBtn = document.querySelector(".close-window"); //close btn (red circle)
+const addBookBtn = document.querySelector("#addbookbtn"); //"Add Book" btn
+const submitBtn = document.querySelector("button[type='submit']"); //submit btn (it's actuall name is "Add Book" , or sometimes "edit") (green)
+const removeBookBtn = document.querySelector("#removeBookBtn"); //"remove book" btn (red)
+const menue = document.querySelector("#addbookmenue"); //referes to the actuall dom element that contains all the menue items (toggle "hiden" to show)
 
-let editWindowIsOpen = false;             //the editing window open bool
-let addBookWindowIsOpen = false;          //the Add Book window open bool
-let editingTheBookNumber = undefined;     //the number of position the book that is currently being edited has in myLibrary
-let TempBook = new book();                //temporary book that is not yet in myLibrary
+let editWindowIsOpen = false; //the editing window open bool
+let addBookWindowIsOpen = false; //the Add Book window open bool
+let editingTheBookNumber = undefined; //the number of position the book that is currently being edited has in myLibrary
+let TempBook = new book(); //temporary book that is not yet in myLibrary
+
+//event listener for "remove book" btn
+removeBookBtn.addEventListener("click", () => {
+  if (editWindowIsOpen) {
+    myLibrary.splice(editingTheBookNumber, 1);
+  }
+  updateBookshelf();
+
+  menue.classList.toggle("hidden");
+  editWindowIsOpen = false;
+  addBookWindowIsOpen = false;
+});
 
 //event listener for X btn
 closeBtn.addEventListener("click", () => {
-  addBookMenue.classList.toggle("hidden");
-  if (editWindowIsOpen) {
-    removeBookBtn.classList.toggle("hidden");
-  }
+  menue.classList.toggle("hidden");
+  editWindowIsOpen = false;
+  addBookWindowIsOpen = false;
 });
 //event listener for "Add Book" btn
 addBookBtn.addEventListener("click", () => {
   clearForm();
-  addBookMenue.classList.toggle("hidden");
   submitBtn.textContent = "Add Book";
+
+  addBookWindowIsOpen = true;
+  menue.classList.toggle("hidden");
+  removeBookBtn.classList.add("hidden");
 });
 
-//event listener for "Add Book" OR "Edit Book" btn (Submit)
+//event listener for Submit ("Add Book" OR "Edit Book" btn)
 submitBtn.addEventListener("click", () => {
   if (editWindowIsOpen) {
     myLibrary[editingTheBookNumber].title = title.value;
@@ -134,7 +146,6 @@ submitBtn.addEventListener("click", () => {
     myLibrary[editingTheBookNumber].image = image.value;
     myLibrary[editingTheBookNumber].linkName = linkName.value;
     myLibrary[editingTheBookNumber].linkUrl = linkUrl.value;
-    removeBookBtn.classList.toggle("hidden");
     updateBookshelf();
   }
   if (!editWindowIsOpen) {
@@ -150,18 +161,19 @@ submitBtn.addEventListener("click", () => {
     updateBookshelf();
   }
   editWindowIsOpen = false;
-  addBookMenue.classList.toggle("hidden");
+  addBookWindowIsOpen = false;
+  menue.classList.toggle("hidden");
 });
 
-//opens book editing menue (This function is called from an inline script in the dom, NOT from an event listener =) )
+//opens book editing menue (This function is called from an inline script in the dom, NOT from an eventlistener =) (inorder to let the function know which book we're working with))
 function openEditWindow(bookNumber) {
   editWindowIsOpen = true;
   editingTheBookNumber = bookNumber;
   clearForm();
   console.log(bookNumber);
 
-  removeBookBtn.classList.toggle("hidden"); //shows remove book btn
-  addBookMenue.classList.toggle("hidden");
+  removeBookBtn.classList.remove("hidden"); //shows "remove book" btn
+  menue.classList.toggle("hidden");
 
   title.value = myLibrary[bookNumber].title;
   author.value = myLibrary[bookNumber].author;
