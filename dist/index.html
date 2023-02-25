@@ -7,11 +7,98 @@
     <title>Document</title>
 
     <link href="output.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
     <script src="script.js"></script>
   </head>
-  <body>
-    <h1 class="bg-cyan-600">
-      Hello world!
-    </h1>
+  <body class="bg-slate-200">
+    <div
+      class="relative flex justify-between items-center w-full px-4 py-4 bg-gray-900 text-white font-medium shadow-lg"
+    >
+      <div>
+        <p class="px-2 py-1">My Library</p>
+      </div>
+      <div>
+        <p
+          class="rounded-lg bg-slate-700 px-4 py-1 border-t-2 border-slate-600"
+        >
+          Add Book
+        </p>
+      </div>
+    </div>
+    <!-- container -->
+    <div class="flex gap-8 py-8 px-8">
+      <!-- card -->
+      <div
+        class="flex flex-col gap-4 bg-slate-100 py-4 px-4 rounded-lg shadow-lg border-t-2 border-white"
+      >
+        <div class="flex gap-5">
+          <img
+            src="https://media.shortform.com/covers/png/the-magic-of-thinking-big-cover@8x.png"
+            alt="book cover"
+            width="120"
+            class="rounded-lg"
+          />
+          <div class="flex flex-col gap-4 justify-between">
+            <!-- text -->
+            <div>
+              <p class="font-semibold">The Magic of Thinking Big</p>
+              <p>David J. Schwartz</p>
+              <p>1959</p>
+            </div>
+            <div>
+              <a
+                class="underline"
+                href="https://www.amazon.com/Magic-Thinking-Big-David-Schwartz/dp/0671646788"
+                >Amazon link</a
+              >
+            </div>
+          </div>
+          <div class="flex flex-col gap-4">
+            <span
+              class="material-symbols-outlined bg-slate-200 rounded-lg px-1 py-1"
+              >edit</span
+            >
+          </div>
+        </div>
+      </div>
+
+      <!-- card -->
+      <div
+        class="flex flex-col gap-4 bg-slate-100 py-4 px-4 rounded-lg shadow-lg border-t-2 border-white"
+      >
+        <div class="flex gap-5">
+          <img
+            src="https://media.shortform.com/covers/png/the-magic-of-thinking-big-cover@8x.png"
+            alt="book cover"
+            width="120"
+            class="rounded-lg"
+          />
+          <div class="flex flex-col gap-4 justify-between">
+            <!-- text -->
+            <div>
+              <p class="font-semibold">The Magic of Thinking Big</p>
+              <p>David J. Schwartz</p>
+              <p>1959</p>
+            </div>
+            <div>
+              <a
+                class="underline"
+                href="https://www.amazon.com/Magic-Thinking-Big-David-Schwartz/dp/0671646788"
+                >Amazon link</a
+              >
+            </div>
+          </div>
+          <div class="flex flex-col gap-4">
+            <span
+              class="material-symbols-outlined bg-slate-200 rounded-lg px-1 py-1"
+              >edit</span
+            >
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
