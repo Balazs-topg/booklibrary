@@ -56,7 +56,7 @@ function updateBookshelf() {
         <div class="flex gap-5">
           <img
             src="${myLibrary[i].image}"
-            onerror="this.src='../image-is-missing.svg';"
+            onerror="this.src='.image-is-missing.svg';"
             alt="book cover"
             class="rounded-lg h-36 w-28 bg-slate-200"
           />
