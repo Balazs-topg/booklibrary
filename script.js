@@ -56,7 +56,6 @@ function updateBookshelf() {
         <div class="flex gap-5">
           <img
             src="${myLibrary[i].image}"
-            onerror="this.src='.image-is-missing.svg';"
             alt="book cover"
             class="rounded-lg h-36 w-28 bg-slate-200"
           />
@@ -160,7 +159,7 @@ submitBtn.addEventListener("click", () => {
     newBook.linkName = linkName.value;
     newBook.linkUrl = linkUrl.value;
 
-    //incase no info is provided (img is handled in the html)
+    //incase no info is provided
     if (title.value === "") {
       newBook.title = "title is missing";
     }
@@ -170,6 +169,10 @@ submitBtn.addEventListener("click", () => {
     if (year.value === "") {
       newBook.year = "year is missing";
     }
+    if (image.value === "") {
+      newBook.image = "image-is-missing.svg";
+    }
+
 
     myLibrary.push(newBook);
     updateBookshelf();
