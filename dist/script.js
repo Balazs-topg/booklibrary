@@ -1,4 +1,12 @@
 //* maybe add esc to close menue
+
+//style things:
+//* add animations
+//* fix blur div *not* covering up full screen (and other scroll issues)
+//* add placeholder incase no image is provided
+//* add placeholer for other stuff too
+//* add more icons
+
 let myLibrary = [];
 
 //creates book object
@@ -55,8 +63,9 @@ function updateBookshelf() {
         <div class="flex gap-5">
           <img
             src="${myLibrary[i].image}"
+            onerror="this.src='../image-is-missing.svg';"
             alt="book cover"
-            class="rounded-lg h-36 w-28"
+            class="rounded-lg h-36 w-28 bg-slate-300"
           />
           <div class="flex flex-col gap-4 justify-between grow">
             <!-- text -->
@@ -182,7 +191,7 @@ function openEditWindow(bookNumber) {
   linkName.value = myLibrary[bookNumber].linkName;
   linkUrl.value = myLibrary[bookNumber].linkUrl;
 
-  submitBtn.textContent = "edit";
+  submitBtn.textContent = "Edit";
 
   TempBook.bookNumber = bookNumber;
   TempBook.title = title.value;
