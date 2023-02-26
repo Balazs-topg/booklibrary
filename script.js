@@ -1,11 +1,4 @@
-//* maybe add esc to close menue
-
-//style things:
-//* add animations
-//* fix blur div *not* covering up full screen (and other scroll issues)
-//* add placeholder incase no image is provided
-//* add placeholer for other stuff too
-//* add more icons
+//* has injection vulnerability (because of .innerHTML on line 52 and beyond ish)
 
 let myLibrary = [];
 
@@ -65,7 +58,7 @@ function updateBookshelf() {
             src="${myLibrary[i].image}"
             onerror="this.src='../image-is-missing.svg';"
             alt="book cover"
-            class="rounded-lg h-36 w-28 bg-slate-300"
+            class="rounded-lg h-36 w-28 bg-slate-200"
           />
           <div class="flex flex-col gap-4 justify-between grow">
             <!-- text -->
@@ -85,7 +78,7 @@ function updateBookshelf() {
           </div>
           <div class="flex flex-col gap-4">
             <span
-              class="edit cursor-pointer material-symbols-outlined select-none bg-slate-200 rounded-lg px-1 py-1 text-slate-600"
+              class="edit cursor-pointer material-symbols-outlined select-none bg-slate-200 rounded-lg px-1 py-1 text-slate-600 hover:bg-slate-100 transition-all active:translate-y-px"
               onclick="openEditWindow(${i})"
               >edit</span
             >
@@ -159,12 +152,24 @@ submitBtn.addEventListener("click", () => {
   }
   if (!editWindowIsOpen) {
     let newBook = Object.create(book);
+
     newBook.title = title.value;
     newBook.author = author.value;
     newBook.year = year.value;
     newBook.image = image.value;
     newBook.linkName = linkName.value;
     newBook.linkUrl = linkUrl.value;
+
+    //incase no info is provided (img is handled in the html)
+    if (title.value === "") {
+      newBook.title = "title is missing";
+    }
+    if (author.value === "") {
+      newBook.author = "author is missing";
+    }
+    if (year.value === "") {
+      newBook.year = "year is missing";
+    }
 
     myLibrary.push(newBook);
     updateBookshelf();
@@ -201,3 +206,13 @@ function openEditWindow(bookNumber) {
   TempBook.linkName = linkName.value;
   TempBook.linkUrl = linkUrl.value;
 }
+
+document.onkeydown = function (evt) {
+  if (evt.keyCode === 27) {
+    console.log("pressed");
+    editWindowIsOpen = false;
+    addBookWindowIsOpen = false;
+    menue.classList.add("hidden");
+    clearForm();
+  }
+};

@@ -14,11 +14,11 @@
     <script src="script.js" defer></script>
   </head>
 
-  <body class="bg-slate-200">
+  <body class="bg-slate-200 selection:bg-gray-300">
     <!--add book menue-->
     <div
       id="addbookmenue"
-      class="absolute z-30 w-full h-screen backdrop-blur-md bg-slate-900/40 flex justify-center items-center hidden"
+      class="fixed z-30 w-full h-screen backdrop-blur-md bg-slate-900/40 flex justify-center items-center hidden"
     >
       <!--menue container-->
       <div
@@ -26,7 +26,7 @@
       >
         <!--close button-->
         <div
-          class="close-window select-none cursor-pointer absolute w-8 h-8 bg-red-500 border-t-2 border-red-300 -right-2 -top-2 rounded-full text-white flex justify-center items-center"
+          class="close-window select-none cursor-pointer absolute w-8 h-8 bg-red-500 border-t-2 border-red-300 -right-2 -top-2 rounded-full text-white flex justify-center items-center hover:bg-red-400 hover:border-red-200 transition-all active:translate-y-px"
         >
           <span class="material-symbols-outlined"> close </span>
         </div>
@@ -98,7 +98,7 @@
 
         <!--submit-->
         <button
-          class="rounded-lg bg-green-500 border-t-2 border-green-300 text-white font-semibold py-1 px-1"
+          class="rounded-lg bg-green-500 border-t-2 border-green-300 text-white font-semibold py-1 px-1 hover:bg-green-400 hover:border-green-200 transition-all active:translate-y-px"
           type="submit"
         >
           Add Book
@@ -106,7 +106,7 @@
         <!--removeBookBtn-->
         <button
           id="removeBookBtn"
-          class="rounded-lg bg-red-500 border-t-2 border-red-300 text-white font-semibold py-1 px-1 hidden"
+          class="rounded-lg bg-red-500 border-t-2 border-red-300 text-white font-semibold py-1 px-1 hidden hover:bg-red-400 hover:border-red-200 transition-all active:translate-y-px"
           type="submit"
         >
           Remove Book
@@ -115,15 +115,15 @@
     </div>
 
     <header
-      class="relative flex justify-between items-center w-full px-4 py-4 bg-gray-900 text-white font-medium shadow-lg"
+      class="sticky top-0 z-20 flex justify-between items-center w-full px-4 py-4 bg-gray-900 text-white font-medium shadow-lg"
     >
       <div>
-        <p class="px-2 py-1">My Library</p>
+        <p class="px-2 py-1 border-b-4 border-slate-600">My Library</p>
       </div>
       <div>
         <button
           id="addbookbtn"
-          class="rounded-lg bg-slate-700 px-4 py-1 border-t-2 border-slate-600"
+          class="rounded-lg bg-slate-700 px-4 py-1 border-t-2 border-slate-600 hover:bg-slate-600 hover:border-slate-500 transition-all active:translate-y-px"
         >
           <div class="flex gap-2">
             <span class="material-symbols-outlined">add</span>Add Book
@@ -132,9 +132,12 @@
       </div>
     </header>
     <!-- container -->
-    <div id="container" class="flex gap-8 py-10 px-8 flex-wrap"></div>
-    <p class="absolute bottom-5 left-5 text-slate-500 z-0">
-      Copyright 2023 Balazs hevesi
+    <div id="container" class="flex gap-8 py-10 px-8 pb-32 flex-wrap relative z-10"></div>
+    <p class="fixed bottom-5 left-5 w-full text-slate-400 z-0 text-center">
+      Balazs hevesi<br>
+      Copyright 2023
     </p>
   </body>
+  <!--dumb stuff to make tailwind work with js-->
+  <div class="hover:bg-slate-100"></div>
 </html>
